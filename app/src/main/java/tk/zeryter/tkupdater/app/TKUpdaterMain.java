@@ -1,10 +1,12 @@
 package tk.zeryter.tkupdater.app;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.*;
+import android.webkit.WebView;
 import tk.zeryter.tkupdater.app.activities.SettingsActivity;
 
 
@@ -14,6 +16,13 @@ public class TKUpdaterMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tkupdater_main);
+
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.container, new BaseFragment())
+                    .commit();
+        }
+
     }
 
 
@@ -37,5 +46,36 @@ public class TKUpdaterMain extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class BaseFragment extends Fragment {
+
+        WebView webView;
+
+        public BaseFragment() {
+            Log.d("PlaceHolderFragment", "Run");
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_tkupdate_main, container, false);
+
+            return rootView;
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+
+            webView = (WebView) getView().findViewById(R.id.WebViewer);
+
+            API.setWebView(webView);
+            API.testLogin("exaple@example.com","asdf");
+
+        }
     }
 }
