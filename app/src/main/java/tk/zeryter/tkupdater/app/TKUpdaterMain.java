@@ -12,6 +12,11 @@ import tk.zeryter.tkupdater.app.activities.SettingsActivity;
 
 public class TKUpdaterMain extends Activity {
 
+    public TKUpdaterMain() {
+        Log.d("TKUpdater", "Run");
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +29,6 @@ public class TKUpdaterMain extends Activity {
         }
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,7 +60,7 @@ public class TKUpdaterMain extends Activity {
         WebView webView;
 
         public BaseFragment() {
-            Log.d("PlaceHolderFragment", "Run");
+            Log.d("BaseFragment", "Run");
         }
 
         @Override
@@ -70,6 +74,8 @@ public class TKUpdaterMain extends Activity {
         @Override
         public void onStart() {
             super.onStart();
+
+            Log.d("BaseFragment","onStart");
 
             webView = (WebView) getView().findViewById(R.id.WebViewer);
 
