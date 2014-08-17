@@ -1,9 +1,11 @@
 package tk.zeryter.tkupdater.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import tk.zeryter.tkupdater.app.activities.SettingsActivity;
 
 
 public class TKUpdaterMain extends Activity {
@@ -29,6 +31,9 @@ public class TKUpdaterMain extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent settings = new Intent(this, SettingsActivity.class);
+
+            startActivity(settings);
             return true;
         }
         return super.onOptionsItemSelected(item);
