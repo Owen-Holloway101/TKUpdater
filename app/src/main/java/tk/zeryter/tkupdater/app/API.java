@@ -2,7 +2,6 @@ package tk.zeryter.tkupdater.app;
 
 import android.util.Log;
 import android.webkit.*;
-import org.apache.http.util.EncodingUtils;
 
 /*
 * Owen Holloway, Zeryt
@@ -33,7 +32,7 @@ public class API {
             }
         });
 
-        webViewer.addJavascriptInterface(new WebViewInterface(), "INTERFACE");
+        webViewer.addJavascriptInterface(new MyJavascriptInterface(), "INTERFACE");
     }
 
     public static void testLogin(final String user, final String pass) {
@@ -41,8 +40,9 @@ public class API {
         webViewer.setWebViewClient(new WebViewClient() {
 
             public void onPageFinished(WebView view, String url) {
-                webViewer.loadUrl("javascript:function set() {document.getElementById('fldemail').value=\""+user+"\";document.getElementById('fldpassword').value=\""+pass+"\";}; set(); document.Login.submit();");
-            }
+                webViewer.addJavascriptInterface(new MyJavascriptInterface(), "INTERFACE");
+                webViewer.loadUrl("javascript:function set() {document.getElementById('fldemail').value=\""+user+"\";document.getElementById('fldpassword').value=\""+pass+"\";} set(); INTERFACE.setDocument('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>'); document.Login.submit();");
+           }
         });
         webViewer.loadUrl("http://my.dot.tk");
 
@@ -50,11 +50,12 @@ public class API {
         //Log.d("utasconnect", webViewer.getUrl());
     }
 
-    public static class WebViewInterface {
+    public static class MyJavascriptInterface {
 
         public static String html;
 
         @JavascriptInterface
+        @SuppressWarnings("unused")
         public void setDocument(String document) {
             html = document;
             Log.i("Document", document);
