@@ -31,8 +31,8 @@ public class TKUpdaterMain extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent settings = new Intent(this, SettingsActivity.class);
 
+            Intent settings = new Intent(this, SettingsActivity.class);
             startActivity(settings);
             return true;
         }
