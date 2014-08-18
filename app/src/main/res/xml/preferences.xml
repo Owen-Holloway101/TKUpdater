@@ -3,8 +3,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:key="PREF_EMAIL"
-        android:title="email"/>
+        android:title="email"
+        android:defaultValue="NULL"/>
     <EditTextPreference
         android:key="PREF_PASSWORD"
-        android:title="password"/>
+        android:title="password"
+        android:defaultValue="NULL"/>
 </PreferenceScreen>

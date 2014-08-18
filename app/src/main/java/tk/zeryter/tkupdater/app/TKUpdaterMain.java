@@ -3,7 +3,9 @@ package tk.zeryter.tkupdater.app;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.webkit.WebView;
@@ -27,6 +29,10 @@ public class TKUpdaterMain extends Activity {
                     .add(R.id.container, new BaseFragment())
                     .commit();
         }
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        Log.d("sharedPref",sharedPref.getString("PREF_EMAIL",""));
 
     }
 

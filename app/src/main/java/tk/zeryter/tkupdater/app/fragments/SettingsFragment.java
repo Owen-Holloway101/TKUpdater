@@ -1,5 +1,6 @@
 package tk.zeryter.tkupdater.app.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.util.Log;
@@ -18,5 +19,10 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

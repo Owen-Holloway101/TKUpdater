@@ -42,13 +42,13 @@ public class API {
             public void onPageFinished(WebView view, String url) {
                 webViewer.addJavascriptInterface(new MyJavascriptInterface(), "INTERFACE");
                 webViewer.loadUrl("javascript:function set() {document.getElementById('fldemail').value=\""+user+"\";document.getElementById('fldpassword').value=\""+pass+"\";} set(); INTERFACE.setDocument('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>'); document.Login.submit();");
+                Log.d("WebViewerTitle",webViewer.getTitle());
            }
         });
         webViewer.loadUrl("http://my.dot.tk");
-
-
-        //Log.d("utasconnect", webViewer.getUrl());
     }
+
+
 
     public static class MyJavascriptInterface {
 
