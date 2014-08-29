@@ -30,7 +30,7 @@ public class TKUpdaterMain extends Activity {
                     .commit();
         }
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         Log.d("sharedPref",sharedPref.getString("PREF_EMAIL",""));
 
@@ -86,7 +86,7 @@ public class TKUpdaterMain extends Activity {
             webView = (WebView) getView().findViewById(R.id.WebViewer);
 
             API.setWebView(webView);
-            API.testLogin("exaple@example.com","asdf");
+            //API.testLogin("exaple@example.com","asdf");
 
         }
     }

@@ -4,9 +4,12 @@
     <EditTextPreference
         android:key="PREF_EMAIL"
         android:title="email"
-        android:defaultValue="NULL"/>
+        android:inputType="textEmailAddress"
+        android:defaultValue=""/>
+    <!--Yes I am well aware this is a terrible way to store passwords but I just don't care-->
     <EditTextPreference
         android:key="PREF_PASSWORD"
         android:title="password"
-        android:defaultValue="NULL"/>
+        android:inputType="textPassword"
+        android:defaultValue=""/>
 </PreferenceScreen>
