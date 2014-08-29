@@ -9,10 +9,14 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.webkit.WebView;
+import android.widget.Button;
 import tk.zeryter.tkupdater.app.activities.SettingsActivity;
+import tk.zeryter.tkupdater.app.activities.UpdateActivity;
 
 
 public class TKUpdaterMain extends Activity {
+
+    public static String log="";
 
     public TKUpdaterMain() {
         Log.d("TKUpdater", "Run");
@@ -63,8 +67,6 @@ public class TKUpdaterMain extends Activity {
      */
     public static class BaseFragment extends Fragment {
 
-        WebView webView;
-
         public BaseFragment() {
             Log.d("BaseFragment", "Run");
         }
@@ -77,16 +79,22 @@ public class TKUpdaterMain extends Activity {
             return rootView;
         }
 
+        Button update;
+
         @Override
         public void onStart() {
             super.onStart();
 
+            update = (Button) getView().findViewById(R.id.buttonUpdate);
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent updateActivity = new Intent(getActivity(), UpdateActivity.class);
+                    startActivity(updateActivity);
+                }
+            });
+
             Log.d("BaseFragment","onStart");
-
-            webView = (WebView) getView().findViewById(R.id.WebViewer);
-
-            API.setWebView(webView);
-            //API.testLogin("exaple@example.com","asdf");
 
         }
     }

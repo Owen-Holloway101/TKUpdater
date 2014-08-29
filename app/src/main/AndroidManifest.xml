@@ -21,9 +21,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activities.UpdateActivity"
+                  android:label="@string/update_activity"
+                  android:parentActivityName=".TKUpdaterMain">
+        </activity>
+
         <activity
                 android:name=".activities.SettingsActivity"
-                android:label="@string/app_name"
+                android:label="@string/settings_activity"
                 android:parentActivityName=".TKUpdaterMain" >
         </activity>
     </application>
