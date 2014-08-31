@@ -41,11 +41,11 @@ public class API {
 
             public void onPageFinished(WebView view, String url) {
                 webViewer.addJavascriptInterface(new MyJavascriptInterface(), "INTERFACE");
-                webViewer.loadUrl("javascript:function set() {document.getElementById('fldemail').value=\""+user+"\";document.getElementById('fldpassword').value=\""+pass+"\";} set();document.Login.submit();INTERFACE.setDocument('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+                webViewer.loadUrl("javascript:function set() {document.getElementById('username').value=\""+user+"\";document.getElementById('password').value=\""+pass+"\";} set();$('.form-stacked').submit();INTERFACE.setDocument('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                 Log.d("WebViewerTitle",webViewer.getTitle());
            }
         });
-        webViewer.loadUrl("http://my.dot.tk");
+        webViewer.loadUrl("https://partners.freenom.com/clientarea.php");
     }
 
     public static void  updateDNS(String url) {
