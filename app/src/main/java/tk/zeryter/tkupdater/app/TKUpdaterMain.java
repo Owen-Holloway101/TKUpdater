@@ -16,8 +16,6 @@ import tk.zeryter.tkupdater.app.activities.UpdateActivity;
 
 public class TKUpdaterMain extends Activity {
 
-    public static String log="";
-
     public TKUpdaterMain() {
         Log.d("TKUpdater", "Run");
 
@@ -36,22 +34,18 @@ public class TKUpdaterMain extends Activity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-        Log.d("sharedPref",sharedPref.getString("PREF_EMAIL",""));
+        Log.d("PREF_EMAIL",sharedPref.getString("PREF_EMAIL",""));
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.tkupdater_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
 

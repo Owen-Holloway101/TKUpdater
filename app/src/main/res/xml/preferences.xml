@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference
-        android:key="PREF_EMAIL"
-        android:title="email"
-        android:inputType="textEmailAddress"
-        android:defaultValue=""/>
-    <!--Yes I am well aware this is a terrible way to store passwords but I just don't care-->
-    <EditTextPreference
-        android:key="PREF_PASSWORD"
-        android:title="password"
-        android:inputType="textPassword"
-        android:defaultValue=""/>
+    <PreferenceCategory
+            android:title="Account">
+        <EditTextPreference
+            android:key="PREF_EMAIL"
+            android:title="Email"
+            android:inputType="textEmailAddress"
+            android:defaultValue=""/>
+        <!--Yes I am well aware this is a terrible way to store passwords but I just don't care-->
+        <EditTextPreference
+            android:key="PREF_PASSWORD"
+            android:title="Password"
+            android:inputType="textPassword"
+            android:defaultValue=""/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="Domain">
+        <EditTextPreference/>
+    </PreferenceCategory>
 </PreferenceScreen>

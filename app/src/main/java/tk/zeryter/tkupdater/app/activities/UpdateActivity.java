@@ -30,7 +30,6 @@ public class UpdateActivity extends Activity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         API.setWebView(webView);
-        API.testLogin(sharedPref.getString("PREF_EMAIL",""),sharedPref.getString("PREF_PASSWORD",""));
-
+        API.login(sharedPref.getString("PREF_EMAIL", ""), sharedPref.getString("PREF_PASSWORD", ""));
     }
 }
