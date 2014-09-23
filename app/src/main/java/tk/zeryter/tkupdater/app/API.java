@@ -2,10 +2,16 @@ package tk.zeryter.tkupdater.app;
 
 import android.util.Log;
 import android.webkit.*;
+import android.widget.Toast;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import tk.zeryter.tkupdater.app.activities.UpdateActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,22 +67,35 @@ public class API {
 
     public static void updateDNS(final String user, final String pass, final String url) {
 
-        //Remove all previous cookies
-        CookieSyncManager.createInstance(webViewer.getContext());
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.removeAllCookie();
-        CookieSyncManager.getInstance().sync();
-        Log.i("cookies", "removed all cookies");
+        Log.d("running","updateDNS");
 
-        //The post url is an xml ... interesting
-        HttpPost post = new HttpPost("https://api.freenom.com/v2/domain/modify.xml");
+        new Thread(new Runnable() {
 
-        //These are the requests we need
-        List<NameValuePair> postRequests = new ArrayList<NameValuePair>(4);
-        postRequests.add(new BasicNameValuePair("domainname",url));
-        postRequests.add(new BasicNameValuePair("forward_url",ip));
-        postRequests.add(new BasicNameValuePair("email",user));
-        postRequests.add(new BasicNameValuePair("password",pass));
+            @Override
+            public void run() {
+
+                //The post url is an xml ... interesting
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost post = new HttpPost("https://api.freenom.com/v2/domain/modify.xml");
+
+                //These are the requests we need
+                List<NameValuePair> postRequests = new ArrayList<NameValuePair>(4);
+                postRequests.add(new BasicNameValuePair("domainname",url));
+                postRequests.add(new BasicNameValuePair("forward_url",ip));
+                postRequests.add(new BasicNameValuePair("email",user));
+                postRequests.add(new BasicNameValuePair("password",pass));
+
+                HttpResponse response = null;
+
+                try {
+                    response = httpclient.execute(post);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("response", response.toString());
+            }
+        });
 
     }
 
