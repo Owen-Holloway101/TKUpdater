@@ -17,6 +17,10 @@
     </PreferenceCategory>
     <PreferenceCategory
             android:title="Domain">
-        <EditTextPreference/>
+        <EditTextPreference
+                android:key="PREF_URL"
+                android:title="URL"
+                android:inputType="textNoSuggestions"
+                android:defaultValue=""/>
     </PreferenceCategory>
 </PreferenceScreen>
