@@ -3,12 +3,14 @@ package tk.zeryter.tkupdater.app;
 import android.util.Log;
 import android.webkit.*;
 import android.widget.Toast;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import tk.zeryter.tkupdater.app.activities.UpdateActivity;
 
 import java.io.IOException;
@@ -94,8 +96,17 @@ public class API {
                 }
 
                 Log.d("response", response.toString());
+
+                HttpEntity entity = response.getEntity();
+
+                try {
+                    Log.d("response", EntityUtils.toString(entity));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-        });
+        }).start();
 
     }
 
